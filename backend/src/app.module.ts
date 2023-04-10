@@ -8,6 +8,8 @@ import { MenuModule } from './menu/menu.module';
 import { Menu } from './menu/entities/menu.entity';
 import { PhotosModule } from './photos/photos.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { MulterModule } from '@nestjs/platform-express';
       username: 'postgres',
       password: '1234',
       database: 'menu',
-      entities: [FoodType, Menu],
+      entities: [FoodType, Menu, User],
       synchronize: true,
     }),
     FoodTypeModule,
@@ -27,6 +29,7 @@ import { MulterModule } from '@nestjs/platform-express';
     MulterModule.register({
       dest: './uploads',
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

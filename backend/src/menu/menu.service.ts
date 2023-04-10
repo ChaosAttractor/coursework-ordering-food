@@ -12,7 +12,7 @@ export class MenuService {
     private readonly MenuRepository: Repository<Menu>,
   ) {}
 
-  create(createMenuDto: CreateMenuDto) {
+  create(createMenuDto: CreateMenuDto): Promise<Menu> {
     const menu = new Menu();
 
     menu.product_id = createMenuDto.product_id;

@@ -18,7 +18,7 @@ export class FoodTypeController {
   constructor(private readonly foodTypeService: FoodTypeService) {}
 
   @Post()
-  create(@Body() createFoodTypeDto: CreateFoodTypeDto) {
+  create(@Body() createFoodTypeDto: CreateFoodTypeDto): Promise<FoodType> {
     return this.foodTypeService.create(createFoodTypeDto);
   }
 

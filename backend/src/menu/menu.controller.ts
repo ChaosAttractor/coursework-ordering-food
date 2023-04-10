@@ -18,7 +18,7 @@ export class MenuController {
   constructor(private readonly menuService: MenuService) {}
 
   @Post()
-  create(@Body() createMenuDto: CreateMenuDto) {
+  create(@Body() createMenuDto: CreateMenuDto): Promise<Menu> {
     return this.menuService.create(createMenuDto);
   }
 
