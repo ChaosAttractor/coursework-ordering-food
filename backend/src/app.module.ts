@@ -6,6 +6,8 @@ import { FoodTypeModule } from './food_type/food_type.module';
 import { FoodType } from './food_type/entities/food_type.entity';
 import { MenuModule } from './menu/menu.module';
 import { Menu } from './menu/entities/menu.entity';
+import { PhotosModule } from './photos/photos.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -21,6 +23,10 @@ import { Menu } from './menu/entities/menu.entity';
     }),
     FoodTypeModule,
     MenuModule,
+    PhotosModule,
+    MulterModule.register({
+      dest: './uploads',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

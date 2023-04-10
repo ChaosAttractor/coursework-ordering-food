@@ -1,5 +1,12 @@
 import { MaxLength } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { FoodType } from 'src/food_type/entities/food_type.entity';
 
 @Entity()
 export class Menu {
@@ -15,6 +22,16 @@ export class Menu {
   image: string;
 
   @Column()
+  @OneToOne((type) => FoodType, {
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({
+    name: 'type',
+    referencedColumnName: 'type_id',
+    foreignKeyConstraintName: 'typeId',
+  })
   type: number;
 
   @Column()
