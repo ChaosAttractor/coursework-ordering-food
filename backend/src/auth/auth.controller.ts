@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 import { Public } from './roles/public';
@@ -15,7 +15,6 @@ export class AuthController {
     return this.authService.signIn(data, res);
   }
 
-  // @UseGuards(RefreshTokenGuard)
   @Public()
   @Post('logout')
   logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {

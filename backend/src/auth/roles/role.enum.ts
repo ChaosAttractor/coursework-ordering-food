@@ -1,5 +1,5 @@
 export enum RoleList {
-    User = 'user',
-    Worker = 'worker',
-    Admin = 'admin',
-  }
+  User = 'user',
+  Kitchen = 'kitchen',
+  Admin = 'admin',
+}

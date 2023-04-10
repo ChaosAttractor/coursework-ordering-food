@@ -11,6 +11,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { Role } from './role/entities/role.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: '1234',
       database: 'menu',
-      entities: [FoodType, Menu, User],
+      entities: [FoodType, Menu, User, Role],
       synchronize: true,
     }),
     FoodTypeModule,

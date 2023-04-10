@@ -2,7 +2,7 @@ export class CreateUserDto {
   id: number;
   login: string;
   password: string;
-  role: string;
+  role: number;
   createdAt: Date;
   updatedAt: Date;
   refreshToken: string;
