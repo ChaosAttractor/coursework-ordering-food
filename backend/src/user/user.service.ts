@@ -4,45 +4,65 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
+import { RoleService } from 'src/role/role.service';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private readonly UserRepository: Repository<User>,
+    private usersRepository: Repository<User>,
+    private roleRepository: RoleService,
   ) {}
 
-  create(createUserDto: CreateUserDto): Promise<User> {
-    const user = new User();
+  async findAll(): Promise<User[]> {
+    return await this.usersRepository.find();
+  }
 
-    user.id = createUserDto.id;
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const user = new User();
     user.login = createUserDto.login;
-    user.password = createUserDto.password;
+    user.password = await bcrypt.hash(createUserDto.password, 10);
     user.role = createUserDto.role;
 
-    return this.UserRepository.save(user);
-  }
-
-  async findAll(): Promise<User[]> {
-    return await this.UserRepository.find();
-  }
-
-  async findOne(id: number): Promise<User> {
-    return await this.UserRepository.findOneBy({ id: id });
+    return this.usersRepository.save(user);
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
-    const user = await this.UserRepository.findOneBy({ id: id });
-
-    user.id = updateUserDto.id;
+    const user = await this.usersRepository.findOneBy({ id: id });
     user.login = updateUserDto.login;
-    user.password = updateUserDto.password;
+    if (updateUserDto.password) {
+      user.password = await bcrypt.hash(updateUserDto.password, 10);
+    }
     user.role = updateUserDto.role;
+    user.refreshToken = updateUserDto.refreshToken;
 
-    return this.UserRepository.save(user);
+    return this.usersRepository.save(user);
   }
 
-  async remove(id: number): Promise<void> {
-    await this.UserRepository.delete(id);
+  async updateRefreshToken(id: number, refreshToken: string) {
+    const user = await this.usersRepository.findOneBy({ id: id });
+
+    user.refreshToken = refreshToken;
+
+    return this.usersRepository.save(user);
+  }
+
+  findOne(id: number): Promise<User> {
+    return this.usersRepository.findOneBy({ id: id });
+  }
+
+  findOneByLogin(login: string): Promise<User> {
+    return this.usersRepository.findOneBy({ login: login });
+  }
+
+  async remove(id: string): Promise<void> {
+    await this.usersRepository.delete(id);
+  }
+
+  async getRole(id: number): Promise<string> {
+    const { role, ...user } = await this.usersRepository.findOneBy({ id: id });
+    const { role_name } = await this.roleRepository.findOne(role);
+    return role_name;
   }
 }

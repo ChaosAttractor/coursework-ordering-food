@@ -10,6 +10,7 @@ import { PhotosModule } from './photos/photos.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { User } from './user/entities/user.entity';
       dest: './uploads',
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

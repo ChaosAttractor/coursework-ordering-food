@@ -3,4 +3,7 @@ export class CreateUserDto {
   login: string;
   password: string;
   role: string;
+  createdAt: Date;
+  updatedAt: Date;
+  refreshToken: string;
 }
