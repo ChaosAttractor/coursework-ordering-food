@@ -7,16 +7,23 @@ import {
   Res,
   UploadedFile,
   UploadedFiles,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName, imageFileFilter } from './file-upload.utils';
+import { Public } from 'src/auth/roles/public';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { Roles } from 'src/auth/roles/role.decorator';
+import { RoleList } from 'src/auth/roles/role.enum';
 
 @Controller('photos')
 export class PhotosController {
   constructor() {}
-  // upload single file
+
+  @UseGuards(JwtAuthGuard)
+  @Roles(RoleList.Admin)
   @Post()
   @UseInterceptors(
     FileInterceptor('image', {
@@ -38,6 +45,9 @@ export class PhotosController {
       data: response,
     };
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Roles(RoleList.Admin)
   @Post('uploadMultipleFiles')
   @UseInterceptors(
     FilesInterceptor('image', 10, {
@@ -63,6 +73,9 @@ export class PhotosController {
       data: response,
     };
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Public()
   @Get(':imagename')
   getImage(@Param('imagename') image, @Res() res) {
     const response = res.sendFile(image, { root: './uploads' });

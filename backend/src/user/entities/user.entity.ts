@@ -32,7 +32,7 @@ export class User {
     referencedColumnName: 'id',
     foreignKeyConstraintName: 'roleId',
   })
-  @Column()
+  @Column({ nullable: true })
   role: number;
 
   @CreateDateColumn()
@@ -41,6 +41,6 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column()
+  @Column({ nullable: true })
   refreshToken: string;
 }
