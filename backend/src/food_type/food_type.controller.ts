@@ -8,6 +8,7 @@ import {
   Delete,
   ParseIntPipe,
   UseGuards,
+  Res,
 } from '@nestjs/common';
 import { FoodTypeService } from './food_type.service';
 import { CreateFoodTypeDto } from './dto/create-food_type.dto';
@@ -17,6 +18,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Roles } from 'src/auth/roles/role.decorator';
 import { RoleList } from 'src/auth/roles/role.enum';
 import { Public } from 'src/auth/roles/public';
+import { Response } from 'express';
 
 @Controller('food-type')
 export class FoodTypeController {
@@ -25,21 +27,30 @@ export class FoodTypeController {
   @UseGuards(JwtAuthGuard)
   @Roles(RoleList.Admin)
   @Post()
-  create(@Body() createFoodTypeDto: CreateFoodTypeDto): Promise<FoodType> {
+  create(
+    @Res({ passthrough: true }) res: Response,
+    @Body() createFoodTypeDto: CreateFoodTypeDto,
+  ): Promise<FoodType> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.foodTypeService.create(createFoodTypeDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Public()
   @Get()
-  findAll(): Promise<FoodType[]> {
+  findAll(@Res({ passthrough: true }) res: Response): Promise<FoodType[]> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.foodTypeService.findAll();
   }
 
   @UseGuards(JwtAuthGuard)
   @Public()
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number): Promise<FoodType> {
+  findOne(
+    @Res({ passthrough: true }) res: Response,
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<FoodType> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.foodTypeService.findOne(id);
   }
 
@@ -47,16 +58,22 @@ export class FoodTypeController {
   @Roles(RoleList.Admin)
   @Patch(':id')
   update(
+    @Res({ passthrough: true }) res: Response,
     @Param('id', ParseIntPipe) id: number,
     @Body() updateFoodTypeDto: UpdateFoodTypeDto,
   ) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.foodTypeService.update(id, updateFoodTypeDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Roles(RoleList.Admin)
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
+  remove(
+    @Res({ passthrough: true }) res: Response,
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<void> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.foodTypeService.remove(id);
   }
 }

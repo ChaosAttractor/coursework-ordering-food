@@ -28,12 +28,17 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Roles(RoleList.Admin)
   @Get()
-  findAll(): Promise<User[]> {
+  findAll(@Res({ passthrough: true }) res: Response): Promise<User[]> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.userService.findAll();
   }
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  create(
+    @Res({ passthrough: true }) res: Response,
+    @Body() createUserDto: CreateUserDto,
+  ): Promise<User> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.userService.create(createUserDto);
   }
 
@@ -41,16 +46,22 @@ export class UserController {
   @Roles(RoleList.Admin)
   @Patch(':id')
   update(
+    @Res({ passthrough: true }) res: Response,
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.userService.update(id, updateUserDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Roles(RoleList.Admin)
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(
+    @Res({ passthrough: true }) res: Response,
+    @Param('id') id: string,
+  ): Promise<void> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     return this.userService.remove(id);
   }
 
