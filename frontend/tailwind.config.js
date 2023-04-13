@@ -46,6 +46,9 @@ module.exports = {
         ".shadow-sidebar": {
           filter: "drop-shadow(-10px 12px 9px black)",
         },
+        ".shadow-card": {
+          boxShadow: "-2px 9px 11px 5px black",
+        },
       });
     }),
   ],

@@ -67,7 +67,10 @@ export default {
             login: this.UserLogin,
             password: this.UserPassword,
           },
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            "Access-Control-Allow-Origin": "http://localhost:3000/login",
+          }
         )
         .then((res) => {
           console.log("success");

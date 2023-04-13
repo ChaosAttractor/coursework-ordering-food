@@ -1,18 +1,14 @@
 <template>
-  <div class="flex gap-[30px] items-center">
+  <div class="flex gap-[68px] items-center">
     <p class="font-montserrat font-bold text-[24px] text-white">Фильтры</p>
     <v-select
-      :options="books"
+      :options="foodType"
       :placeholder="selectedPlaceholder"
-      label="title"
-      class="w-[340px] bg-alt-white rounded-[60px] px-[10px] font-montserrat font-bold text-[20px]"
+      label="type_name"
+      class="w-[340px] bg-alt-white rounded-[60px] px-[10px] font-montserrat font-bold text-[20px] cursor-pointer shadow-sidebar"
     />
-
-    <!-- class="p-[5px] pt-[4px] rounded-[60px] font-montserrat text-[24px] font-bold bg-alt-white"
-    > -->
-    <!-- option v-for через бэк -->
     <div
-      class="flex w-[340px] h-[36px] justify-between items-center rounded-[60px] bg-alt-white"
+      class="flex w-[340px] h-[38px] justify-between items-center rounded-[60px] bg-alt-white shadow-sidebar"
     >
       <p class="font-montserrat pl-[10px] font-bold text-[20px] text-black">
         По цене
@@ -36,6 +32,7 @@ import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
+import axios from "axios";
 
 export default {
   components: {
@@ -49,14 +46,7 @@ export default {
       min: 0,
       max: 500,
       selectedPlaceholder: "По типу",
-      books: [
-        { title: "Old Man's War" },
-        { title: "The Lock Artist" },
-        { title: "HTML5" },
-        { title: "Right Ho Jeeves" },
-        { title: "The Code of the Wooster" },
-        { title: "Thank You Jeeves" },
-      ],
+      foodType: [],
     };
   },
   methods: {
@@ -66,6 +56,11 @@ export default {
       });
     },
   },
+  mounted() {
+    axios
+      .get("http://localhost:3000/food-type", { withCredentials: true })
+      .then((res) => (this.foodType = res.data));
+  },
 };
 </script>
 
@@ -74,13 +69,18 @@ export default {
   --vs-border-width: 0px;
   --vs-dropdown-bg: #d9d9d9;
   --font-size: 20px;
+  --vs-dropdown-z-index: 1000;
 }
 
-.vs__search {
+.vs__search,
+.vs__selected,
+.vs__actions {
+  z-index: 1000;
   font-size: 20px;
+  cursor: pointer;
 }
 
-.vs_search {
-  height: 29px;
+.vs__dropdown-menu {
+  border-radius: 10px;
 }
 </style>
