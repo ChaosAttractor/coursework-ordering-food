@@ -3,7 +3,8 @@
     <p class="font-montserrat font-bold text-[24px] text-white">Фильтры</p>
     <v-select
       :options="foodType"
-      :placeholder="selectedPlaceholder"
+      :placeholder="selectPlaceholder"
+      v-model="selectedType"
       label="type_name"
       class="w-[340px] bg-alt-white rounded-[60px] px-[10px] font-montserrat font-bold text-[20px] cursor-pointer shadow-sidebar"
     />
@@ -33,6 +34,7 @@ import "vue-slider-component/theme/default.css";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 import axios from "axios";
+import { useFilterStore } from "../store/FilterStore";
 
 export default {
   components: {
@@ -41,19 +43,22 @@ export default {
   },
   data() {
     return {
+      foodType: [],
+      selectPlaceholder: "По типу",
       selectedType: "",
       rangeValue: [0, 500],
       min: 0,
       max: 500,
-      selectedPlaceholder: "По типу",
-      foodType: [],
     };
   },
   methods: {
     choosePrice() {
-      this.$emit("getPrice", {
-        price: this.rangeValue,
-      });
+      useFilterStore().rangeValue = this.rangeValue;
+    },
+  },
+  watch: {
+    selectedType() {
+      useFilterStore().type = this.selectedType;
     },
   },
   mounted() {

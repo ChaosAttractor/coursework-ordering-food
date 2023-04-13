@@ -8,9 +8,7 @@ module.exports = {
       colors: {
         "gray-primary": "#49454F",
         "alt-white": "#D9D9D9",
-        "content-primary": "#49454F",
         "sidebar-inactive": "#C2B9D2",
-        "sidebar-active": "#49454F",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
@@ -48,6 +46,17 @@ module.exports = {
         },
         ".shadow-card": {
           boxShadow: "-2px 9px 11px 5px black",
+        },
+        "::-webkit-scrollbar": {
+          width: "15px",
+        },
+        "::-webkit-scrollbar-track": {
+          backgroundColor: "#2D3036",
+          borderRadius: "60px",
+        },
+        "::-webkit-scrollbar-thumb": {
+          backgroundColor: "#C2B9D2",
+          borderRadius: "60px",
         },
       });
     }),

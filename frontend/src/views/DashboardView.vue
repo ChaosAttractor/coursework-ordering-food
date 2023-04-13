@@ -7,8 +7,8 @@
       <div class="w-[230px] flex flex-col ml-[30px] justify-between">
         <div>
           <RouterLink
-            to=""
-            class="inline-flex relative items-center mt-[100px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-sidebar-active transition duration-400 ease-in-out"
+            to="/dashboard"
+            class="inline-flex relative items-center mt-[100px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary transition duration-400 ease-in-out"
           >
             <div class="flex items-center">
               <p class="font-montserrat text-[24px] font-semibold pr-[5px]">
@@ -17,8 +17,8 @@
             </div>
           </RouterLink>
           <RouterLink
-            to=""
-            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-sidebar-active transition duration-400 ease-in-out"
+            to="/dashboard/cart"
+            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary transition duration-400 ease-in-out"
           >
             <div class="flex items-center">
               <p class="font-montserrat text-[24px] font-semibold">Корзина</p>
@@ -26,7 +26,7 @@
           </RouterLink>
           <RouterLink
             to=""
-            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-sidebar-active transition duration-400 ease-in-out"
+            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary transition duration-400 ease-in-out"
           >
             <div class="flex items-center">
               <p class="font-montserrat text-[24px] font-semibold">История</p>
@@ -34,7 +34,7 @@
           </RouterLink>
           <RouterLink
             to=""
-            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-sidebar-active transition duration-400 ease-in-out"
+            class="inline-flex relative items-center mt-[15px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary transition duration-400 ease-in-out"
           >
             <div class="flex items-center">
               <p class="font-montserrat text-[24px] font-semibold">Заказы</p>
@@ -42,7 +42,7 @@
           </RouterLink>
         </div>
         <div
-          class="inline-flex relative cursor-pointer items-center mb-[60px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-sidebar-active transition duration-400 ease-in-out"
+          class="inline-flex relative cursor-pointer items-center mb-[60px] w-[150px] pl-[10px] text-sidebar-inactive rounded-[60px] hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary transition duration-400 ease-in-out"
           @click="logout"
         >
           <p class="font-montserrat text-[24px] font-semibold">Выйти</p>
@@ -50,7 +50,7 @@
       </div>
       <!-- content with routerview -->
       <div
-        class="w-full h-screen bg-content-primary rounded-l-[60px] shadow-content flex justify-center items-center"
+        class="w-full h-screen bg-gray-primary rounded-l-[60px] shadow-content flex justify-center items-center"
       >
         <div class="w-[calc(100%-100px)] h-[calc(100vh-100px)]">
           <RouterView />
