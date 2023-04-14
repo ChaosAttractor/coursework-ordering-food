@@ -101,13 +101,7 @@ const resultImg = computed(() => "http://localhost:3000/photos/" + "404.gif");
 onMounted(() => {
   axios
     .get("http://localhost:3000/menu", { withCredentials: true })
-    .then((res) => {
-      console.log(res.data);
-      return (menu.value = res.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    .then((res) => (menu.value = res.data));
   axios
     .get("http://localhost:3000/food-type", { withCredentials: true })
     .then((res) => (foodType.value = res.data));

@@ -14,6 +14,10 @@ import { AuthModule } from './auth/auth.module';
 import { Role } from './role/entities/role.entity';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/roles/role.guards';
+import { StatusModule } from './status/status.module';
+import { Status } from './status/entities/status.entity';
+import { OrderListModule } from './order_list/order_list.module';
+import { OrderList } from './order_list/entities/order_list.entity';
 
 @Module({
   imports: [
@@ -24,7 +28,7 @@ import { RolesGuard } from './auth/roles/role.guards';
       username: 'postgres',
       password: '1234',
       database: 'menu',
-      entities: [FoodType, Menu, User, Role],
+      entities: [FoodType, Menu, User, Role, Status, OrderList],
       synchronize: true,
     }),
     FoodTypeModule,
@@ -35,6 +39,8 @@ import { RolesGuard } from './auth/roles/role.guards';
     }),
     UserModule,
     AuthModule,
+    StatusModule,
+    OrderListModule,
   ],
   controllers: [AppController],
   providers: [

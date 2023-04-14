@@ -47,6 +47,25 @@ export const useCartStore = defineStore("CartStore", () => {
       }
     }
   };
+  const incQnt = (item) => {
+    item.qnt++;
+  };
+  const deincQnt = (item) => {
+    if (item.qnt > 1) {
+      item.qnt--;
+    } else {
+      let index = cartItems.value.indexOf(item);
+      cartItems.value.splice(index, 1);
+    }
+  };
 
-  return { cartItems, total, itemsInCart, addToCart, removeFromCart };
+  return {
+    cartItems,
+    total,
+    itemsInCart,
+    addToCart,
+    removeFromCart,
+    incQnt,
+    deincQnt,
+  };
 });
