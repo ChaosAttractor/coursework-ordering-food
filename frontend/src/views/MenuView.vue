@@ -6,11 +6,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Filter from "../components/Filter.vue";
 import FoodList from "../components/FoodList.vue";
-
-export default {
-  components: { Filter, FoodList },
-};
 </script>

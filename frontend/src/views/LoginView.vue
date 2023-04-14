@@ -48,38 +48,33 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-export default {
-  data() {
-    return {
-      UserLogin: "",
-      UserPassword: "",
-    };
-  },
-  methods: {
-    login() {
-      axios
-        .post(
-          "http://localhost:3000/login",
-          {
-            login: this.UserLogin,
-            password: this.UserPassword,
-          },
-          {
-            withCredentials: true,
-            "Access-Control-Allow-Origin": "http://localhost:3000/login",
-          }
-        )
-        .then((res) => {
-          console.log("success");
-          this.$router.push("/dashboard");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
-};
+const UserLogin = ref("");
+const UserPassword = ref("");
+const router = useRouter();
+
+const login = () =>
+  axios
+    .post(
+      "http://localhost:3000/login",
+      {
+        login: UserLogin.value,
+        password: UserPassword.value,
+      },
+      {
+        withCredentials: true,
+        "Access-Control-Allow-Origin": "http://localhost:3000/login",
+      }
+    )
+    .then((res) => {
+      console.log("success");
+      router.push("/dashboard");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 </script>

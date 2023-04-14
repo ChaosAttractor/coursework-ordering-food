@@ -60,26 +60,20 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
+import { useRouter } from "vue-router";
 
-export default {
-  components: {},
-  data() {
-    return {};
-  },
-  methods: {
-    logout() {
-      axios
-        .post("http://localhost:3000/logout", {}, { withCredentials: true })
-        .then((res) => {
-          console.log("success");
-          this.$router.push("/");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
+const router = useRouter();
+const logout = () => {
+  axios
+    .post("http://localhost:3000/logout", {}, { withCredentials: true })
+    .then((res) => {
+      console.log("success");
+      router.push("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 </script>

@@ -22,27 +22,20 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    item: {
-      product_id: Number,
-      product_name: String,
-      image: String,
-      type: Number,
-      product_weight: Number,
-      price: Number,
-    },
+<script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  item: {
+    product_id: Number,
+    product_name: String,
+    image: String,
+    type: Number,
+    product_weight: Number,
+    price: Number,
   },
-  data() {
-    return {
-      image: "",
-    };
-  },
-  computed: {
-    resultImg() {
-      return "http://localhost:3000/photos/" + this.item.image;
-    },
-  },
-};
+});
+const resultImg = computed(
+  () => "http://localhost:3000/photos/" + props.item.image
+);
 </script>

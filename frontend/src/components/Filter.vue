@@ -1,13 +1,6 @@
 <template>
   <div class="flex gap-[68px] items-center">
     <p class="font-montserrat font-bold text-[24px] text-white">Фильтры</p>
-    <v-select
-      :options="foodType"
-      :placeholder="selectPlaceholder"
-      v-model="selectedType"
-      label="type_name"
-      class="w-[340px] bg-alt-white rounded-[60px] px-[10px] font-montserrat font-bold text-[20px] cursor-pointer shadow-sidebar"
-    />
     <div
       class="flex w-[340px] h-[38px] justify-between items-center rounded-[60px] bg-alt-white shadow-sidebar"
     >
@@ -15,58 +8,28 @@
         По цене
       </p>
       <vue-slider
-        v-model="rangeValue"
+        v-model="filterStore.rangeValue"
         :enable-cross="false"
         :tooltip="'active'"
         :tooltip-placement="'top'"
         :min="min"
         :max="max"
-        @change="choosePrice"
         style="width: 190px; height: 8px; padding-right: 20px"
       />
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
+import { useFilterStore } from "../store/FilterStore";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
-import vSelect from "vue-select";
-import "vue-select/dist/vue-select.css";
-import axios from "axios";
-import { useFilterStore } from "../store/FilterStore";
 
-export default {
-  components: {
-    VueSlider,
-    vSelect,
-  },
-  data() {
-    return {
-      foodType: [],
-      selectPlaceholder: "По типу",
-      selectedType: "",
-      rangeValue: [0, 500],
-      min: 0,
-      max: 500,
-    };
-  },
-  methods: {
-    choosePrice() {
-      useFilterStore().rangeValue = this.rangeValue;
-    },
-  },
-  watch: {
-    selectedType() {
-      useFilterStore().type = this.selectedType;
-    },
-  },
-  mounted() {
-    axios
-      .get("http://localhost:3000/food-type", { withCredentials: true })
-      .then((res) => (this.foodType = res.data));
-  },
-};
+const rangeValue = ref([0, 500]);
+const min = ref(0);
+const max = ref(500);
+const filterStore = useFilterStore();
 </script>
 
 <style>
