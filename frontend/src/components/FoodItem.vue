@@ -15,6 +15,7 @@
 
       <button
         class="mr-[30px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white shadow-sidebar rounded-[60px] self-end"
+        @click="cartStore.addToCart(item)"
       >
         купить
       </button>
@@ -23,8 +24,10 @@
 </template>
 
 <script setup>
+import { useCartStore } from "../store/CartStore";
 import { computed } from "vue";
 
+const cartStore = useCartStore();
 const props = defineProps({
   item: {
     product_id: Number,
