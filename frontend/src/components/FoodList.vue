@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div v-else>
+    <div v-else-if="menuLength > 0">
       <p class="font-montserrat font-bold text-[34px] text-white text-center">
         Ничего в соответствии с фильтрами не найдено
         <img :src="resultImg" class="m-auto" />
@@ -89,6 +89,7 @@ const filteredMenuBakery = computed(() =>
 const filteredMenuDrink = computed(() =>
   filteredMenu.value.filter((item) => item.type == 4)
 );
+const menuLength = computed(() => menu.value.length);
 const filteredMenuLength = computed(() => filteredMenu.value.length);
 const filteredMenuSoupLength = computed(() => filteredMenuSoup.value.length);
 const filteredMenuDishLength = computed(() => filteredMenuDish.value.length);
