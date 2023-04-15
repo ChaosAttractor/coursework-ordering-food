@@ -18,6 +18,8 @@ import { StatusModule } from './status/status.module';
 import { Status } from './status/entities/status.entity';
 import { OrderListModule } from './order_list/order_list.module';
 import { OrderList } from './order_list/entities/order_list.entity';
+import { PaymentMethodModule } from './payment_method/payment_method.module';
+import { PaymentMethod } from './payment_method/entities/payment_method.entity';
 
 @Module({
   imports: [
@@ -28,7 +30,7 @@ import { OrderList } from './order_list/entities/order_list.entity';
       username: 'postgres',
       password: '1234',
       database: 'menu',
-      entities: [FoodType, Menu, User, Role, Status, OrderList],
+      entities: [FoodType, Menu, User, Role, Status, OrderList, PaymentMethod],
       synchronize: true,
     }),
     FoodTypeModule,
@@ -41,6 +43,7 @@ import { OrderList } from './order_list/entities/order_list.entity';
     AuthModule,
     StatusModule,
     OrderListModule,
+    PaymentMethodModule,
   ],
   controllers: [AppController],
   providers: [

@@ -1,3 +1,4 @@
+import { PaymentMethod } from 'src/payment_method/entities/payment_method.entity';
 import { Status } from 'src/status/entities/status.entity';
 import { User } from 'src/user/entities/user.entity';
 import {
@@ -41,4 +42,23 @@ export class OrderList {
     foreignKeyConstraintName: 'statusId',
   })
   status: number;
+
+  @Column()
+  date: Date;
+
+  @Column()
+  @ManyToOne((type) => PaymentMethod, {
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({
+    name: 'payment_method',
+    referencedColumnName: 'payment_id',
+    foreignKeyConstraintName: 'paymentId',
+  })
+  payment_method: number;
+
+  @Column()
+  price: number;
 }

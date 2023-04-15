@@ -19,6 +19,9 @@ export class OrderListService {
     order_list.list_item = createOrderListDto.list_item;
     order_list.ordered_by = createOrderListDto.ordered_by;
     order_list.status = createOrderListDto.status;
+    order_list.date = createOrderListDto.date;
+    order_list.payment_method = createOrderListDto.payment_method;
+    order_list.price = createOrderListDto.price;
 
     return this.OrderListRepository.save(order_list);
   }
@@ -43,6 +46,9 @@ export class OrderListService {
     order_list.list_item = updateOrderListDto.list_item;
     order_list.ordered_by = updateOrderListDto.ordered_by;
     order_list.status = updateOrderListDto.status;
+    order_list.date = updateOrderListDto.date;
+    order_list.payment_method = updateOrderListDto.payment_method;
+    order_list.price = updateOrderListDto.price;
 
     return this.OrderListRepository.save(order_list);
   }

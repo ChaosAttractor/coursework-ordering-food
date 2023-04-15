@@ -12,7 +12,9 @@
         Заказать
       </p>
     </div>
-    <Modal :show="showModal" @close="showModal = false" />
+    <Modal :show="showModal" @close="showModal = false">
+      <component :is="OrderForm"></component>
+    </Modal>
     <CartList class="mt-[30px] w-full" />
   </div>
 </template>
@@ -22,6 +24,7 @@ import { useCartStore } from "../store/CartStore";
 import CartList from "../components/CartList.vue";
 import Modal from "../components/Modal.vue";
 import { ref } from "vue";
+import OrderForm from "../components/OrderForm.vue";
 
 const cartStore = useCartStore();
 const showModal = ref(false);

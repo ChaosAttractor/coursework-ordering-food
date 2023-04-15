@@ -36,7 +36,6 @@
             class="w-[350px] bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat"
           />
           <button
-            type="submit"
             @click="login"
             class="w-[360px] bg-none bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat"
           >
