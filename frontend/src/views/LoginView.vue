@@ -62,8 +62,8 @@ const login = () =>
     .post(
       "http://localhost:3000/login",
       {
-        login: UserLogin.value,
-        password: UserPassword.value,
+        login: UserLogin.value.trim(),
+        password: UserPassword.value.trim(),
       },
       {
         withCredentials: true,
@@ -71,7 +71,6 @@ const login = () =>
       }
     )
     .then((res) => {
-      console.log("success");
       router.push("/dashboard");
     })
     .catch((error) => {

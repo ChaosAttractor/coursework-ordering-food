@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sidebar-btn {
+  @apply inline-flex relative items-center w-[160px] pl-[10px] text-sidebar-inactive rounded-[60px] fill-sidebar-inactive hover:shadow-sidebar hover:bg-sidebar-inactive hover:text-gray-primary hover:fill-gray-primary;
+}
