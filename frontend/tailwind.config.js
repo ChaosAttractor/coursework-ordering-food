@@ -9,6 +9,7 @@ module.exports = {
         "gray-primary": "#49454F",
         "alt-white": "#D9D9D9",
         "sidebar-inactive": "#C2B9D2",
+        "black-30": "rgba(0, 0, 0, 0.3)",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
