@@ -3,8 +3,9 @@ import { ref } from "vue";
 
 export const useOrderStore = defineStore("OrderStore", () => {
   const orderId = ref(0);
-  const orderPage = ref("OrderForm");
+  const orderFormPage = ref(true);
+  const orderInfoPage = ref(false);
   const showModal = ref(false);
 
-  return { orderId, orderPage, showModal };
+  return { orderId, orderFormPage, orderInfoPage, showModal };
 });

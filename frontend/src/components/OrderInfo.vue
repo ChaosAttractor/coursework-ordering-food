@@ -38,5 +38,7 @@ const orderStore = useOrderStore();
 
 const close = () => {
   orderStore.showModal = false;
+  orderStore.orderFormPage = true;
+  orderStore.orderInfoPage = false;
 };
 </script>

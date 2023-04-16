@@ -13,9 +13,9 @@
       </p>
     </div>
     <Modal>
-      <component :is="OrderForm"></component>
+      <OrderForm v-if="orderStore.orderFormPage" />
+      <OrderInfo v-if="orderStore.orderInfoPage" />
     </Modal>
-    {{ orderStore.orderPage }}
     <CartList class="mt-[30px] w-full" />
   </div>
 </template>
@@ -24,7 +24,6 @@
 import { useCartStore } from "../store/CartStore";
 import CartList from "../components/CartList.vue";
 import Modal from "../components/Modal.vue";
-import { ref } from "vue";
 import OrderForm from "../components/OrderForm.vue";
 import OrderInfo from "../components/OrderInfo.vue";
 import { useOrderStore } from "../store/OrderStore";

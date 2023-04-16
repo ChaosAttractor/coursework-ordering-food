@@ -88,6 +88,8 @@ const createOrder = () =>
     .then((res) => {
       cartStore.cartItems = [];
       orderStore.orderId = res.data.order_id;
+      orderStore.orderFormPage = false;
+      orderStore.orderInfoPage = true;
     })
     .catch((error) => {
       console.log(error);
