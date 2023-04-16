@@ -6,15 +6,16 @@
         Итог: {{ cartStore.total }} ₽
       </p>
       <p
-        class="mr-[30px] font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] cursor-pointer"
-        @click="showModal = true"
+        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] cursor-pointer"
+        @click="orderStore.showModal = true"
       >
         Заказать
       </p>
     </div>
-    <Modal :show="showModal" @close="showModal = false">
+    <Modal>
       <component :is="OrderForm"></component>
     </Modal>
+    {{ orderStore.orderPage }}
     <CartList class="mt-[30px] w-full" />
   </div>
 </template>
@@ -25,7 +26,9 @@ import CartList from "../components/CartList.vue";
 import Modal from "../components/Modal.vue";
 import { ref } from "vue";
 import OrderForm from "../components/OrderForm.vue";
+import OrderInfo from "../components/OrderInfo.vue";
+import { useOrderStore } from "../store/OrderStore";
 
 const cartStore = useCartStore();
-const showModal = ref(false);
+const orderStore = useOrderStore();
 </script>

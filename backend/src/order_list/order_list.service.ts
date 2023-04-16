@@ -4,6 +4,7 @@ import { UpdateOrderListDto } from './dto/update-order_list.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { OrderList } from './entities/order_list.entity';
 import { Repository } from 'typeorm';
+import { Request } from 'express';
 
 @Injectable()
 export class OrderListService {
@@ -12,12 +13,15 @@ export class OrderListService {
     private readonly OrderListRepository: Repository<OrderList>,
   ) {}
 
-  create(createOrderListDto: CreateOrderListDto): Promise<OrderList> {
+  create(
+    createOrderListDto: CreateOrderListDto,
+    req: Request,
+  ): Promise<OrderList> {
     const order_list = new OrderList();
 
     order_list.order_id = createOrderListDto.order_id;
     order_list.list_item = createOrderListDto.list_item;
-    order_list.ordered_by = createOrderListDto.ordered_by;
+    order_list.ordered_by = req.cookies.userId;
     order_list.status = createOrderListDto.status;
     order_list.date = createOrderListDto.date;
     order_list.payment_method = createOrderListDto.payment_method;

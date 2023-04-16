@@ -9,6 +9,7 @@ import {
   UseGuards,
   Res,
   ParseIntPipe,
+  Req,
 } from '@nestjs/common';
 import { OrderListService } from './order_list.service';
 import { CreateOrderListDto } from './dto/create-order_list.dto';
@@ -16,7 +17,7 @@ import { UpdateOrderListDto } from './dto/update-order_list.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RoleList } from 'src/auth/roles/role.enum';
 import { Roles } from 'src/auth/roles/role.decorator';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { OrderList } from './entities/order_list.entity';
 import { Public } from 'src/auth/roles/public';
 
@@ -25,14 +26,15 @@ export class OrderListController {
   constructor(private readonly orderListService: OrderListService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Roles(RoleList.Admin)
+  @Public()
   @Post()
   create(
     @Res({ passthrough: true }) res: Response,
+    @Req() req: Request,
     @Body() createOrderListDto: CreateOrderListDto,
   ): Promise<OrderList> {
     res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    return this.orderListService.create(createOrderListDto);
+    return this.orderListService.create(createOrderListDto, req);
   }
 
   @UseGuards(JwtAuthGuard)
