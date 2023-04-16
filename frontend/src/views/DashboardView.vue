@@ -44,7 +44,7 @@
             </div>
           </RouterLink>
           <RouterLink
-            to=""
+            to="/dashboard/history"
             class="sidebar-btn mt-[15px] transition duration-400 ease-in-out"
           >
             <div class="flex items-center select-none">
@@ -61,7 +61,7 @@
             </div>
           </RouterLink>
           <RouterLink
-            to=""
+            to="/dashboard/orders"
             class="sidebar-btn mt-[15px] transition duration-400 ease-in-out"
           >
             <div class="flex items-center select-none">

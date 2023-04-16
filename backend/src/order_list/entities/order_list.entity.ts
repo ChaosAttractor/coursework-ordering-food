@@ -14,8 +14,8 @@ export class OrderList {
   @PrimaryGeneratedColumn()
   order_id: number;
 
-  @Column('text', { array: true })
-  list_item: string[];
+  @Column()
+  list_item: string;
 
   @Column()
   @ManyToOne((type) => User, {

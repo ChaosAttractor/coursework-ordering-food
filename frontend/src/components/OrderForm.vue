@@ -74,7 +74,7 @@ const createOrder = () =>
     .post(
       "http://localhost:3000/order-list",
       {
-        list_item: cartStore.cartItems,
+        list_item: JSON.stringify(cartStore.cartItems),
         status: 1,
         date: new Date().toISOString(),
         price: cartStore.total,
