@@ -46,13 +46,7 @@ export class OrderListService {
       order_id: id,
     });
 
-    order_list.order_id = updateOrderListDto.order_id;
-    order_list.list_item = updateOrderListDto.list_item;
-    order_list.ordered_by = updateOrderListDto.ordered_by;
     order_list.status = updateOrderListDto.status;
-    order_list.date = updateOrderListDto.date;
-    order_list.payment_method = updateOrderListDto.payment_method;
-    order_list.price = updateOrderListDto.price;
 
     return this.OrderListRepository.save(order_list);
   }

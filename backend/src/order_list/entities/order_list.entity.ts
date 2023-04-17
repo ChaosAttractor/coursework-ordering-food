@@ -18,7 +18,7 @@ export class OrderList {
   list_item: string;
 
   @Column()
-  @ManyToOne((type) => User, {
+  @ManyToOne(() => User, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
@@ -31,7 +31,7 @@ export class OrderList {
   ordered_by: number;
 
   @Column()
-  @ManyToOne((type) => Status, {
+  @ManyToOne(() => Status, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
@@ -47,7 +47,7 @@ export class OrderList {
   date: Date;
 
   @Column()
-  @ManyToOne((type) => PaymentMethod, {
+  @ManyToOne(() => PaymentMethod, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

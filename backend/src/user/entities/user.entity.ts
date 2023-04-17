@@ -22,7 +22,7 @@ export class User {
   @MinLength(6)
   password: string;
 
-  @OneToOne((type) => Role, (role) => role.id, {
+  @OneToOne(() => Role, (role) => role.id, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

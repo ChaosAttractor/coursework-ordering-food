@@ -22,7 +22,7 @@ export class Menu {
   image: string;
 
   @Column()
-  @ManyToOne((type) => FoodType, {
+  @ManyToOne(() => FoodType, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

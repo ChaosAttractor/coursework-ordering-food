@@ -57,7 +57,7 @@ export class OrderListController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Roles(RoleList.Admin)
+  @Roles(RoleList.Admin, RoleList.Kitchen)
   @Patch(':id')
   update(
     @Res({ passthrough: true }) res: Response,
