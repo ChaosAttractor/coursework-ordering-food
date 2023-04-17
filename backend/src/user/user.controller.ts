@@ -33,6 +33,14 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Roles(RoleList.Admin, RoleList.Kitchen)
+  @Get('logins')
+  findAllLogins(@Res({ passthrough: true }) res: Response): Promise<User[]> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    return this.userService.findAllLogins();
+  }
+
   @Post()
   create(
     @Res({ passthrough: true }) res: Response,
