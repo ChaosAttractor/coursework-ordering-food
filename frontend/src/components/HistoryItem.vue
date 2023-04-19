@@ -18,15 +18,6 @@
         </p>
         <p>{{ formatedTime }}</p>
       </div>
-      <div class="w-[30%] flex justify-center">
-        <p
-          v-for="item in logins"
-          :key="item.id"
-          class="font-montserrat text-[24px] font-bold self-start pl-[30px]"
-        >
-          {{ item.login }}
-        </p>
-      </div>
       <div class="w-[30%] flex items-center justify-center select-none">
         <p
           v-for="item in status"
@@ -59,10 +50,6 @@ const props = defineProps({
     status_id: Number,
     status_name: String,
   },
-  loginsList: {
-    id: Number,
-    login: String,
-  },
 });
 
 const formatedDate = computed(() =>
@@ -82,25 +69,4 @@ const status = computed(() => {
     }
   });
 });
-const logins = computed(() => {
-  return props.loginsList.filter((el) => {
-    if (el.id == props.order.ordered_by) {
-      return el;
-    }
-  });
-});
-
-const nextStatus = async () => {
-  if (props.order.status < 4) {
-    props.order.status++;
-    await axios.patch(
-      `http://localhost:3000/order-list/${props.order.order_id}`,
-      { status: props.order.status },
-      {
-        withCredentials: true,
-        "Access-Control-Allow-Origin": "http://localhost:3000/order-list",
-      }
-    );
-  }
-};
 </script>

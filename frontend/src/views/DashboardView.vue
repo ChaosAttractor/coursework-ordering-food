@@ -44,6 +44,7 @@
             </div>
           </RouterLink>
           <RouterLink
+            v-if="roleStore.role == 'admin' || roleStore.role == 'user'"
             to="/dashboard/history"
             class="sidebar-btn mt-[15px] transition duration-400 ease-in-out"
           >
@@ -61,6 +62,7 @@
             </div>
           </RouterLink>
           <RouterLink
+            v-if="roleStore.role == 'admin' || roleStore.role == 'kitchen'"
             to="/dashboard/orders"
             class="sidebar-btn mt-[15px] transition duration-400 ease-in-out"
           >
@@ -111,7 +113,9 @@
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { useRoleStore } from "../store/RoleStore";
 
+const roleStore = useRoleStore();
 const router = useRouter();
 const logout = () => {
   axios

@@ -76,7 +76,7 @@ const createOrder = () =>
       {
         list_item: JSON.stringify(cartStore.cartItems),
         status: 1,
-        date: new Date().toISOString(),
+        date: new Date().toJSON(),
         price: cartStore.total,
         payment_method: 1,
       },

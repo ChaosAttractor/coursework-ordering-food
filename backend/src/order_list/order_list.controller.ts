@@ -47,6 +47,17 @@ export class OrderListController {
 
   @UseGuards(JwtAuthGuard)
   @Public()
+  @Get('/user')
+  findAllUserOrder(
+    @Res({ passthrough: true }) res: Response,
+    @Req() req: Request,
+  ): Promise<OrderList[]> {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    return this.orderListService.findAllUserOrder(req);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Public()
   @Get(':id')
   findOne(
     @Res({ passthrough: true }) res: Response,

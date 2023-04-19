@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-[800px] ml-[15px] pl-[30px] overflow-y-auto">
     <div class="flex gap-[30px] flex-wrap justify-center">
-      <OrderItem
+      <HistoryItem
         v-for="order in ordersSorted"
         :key="order.order_id"
         :order="order"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import OrderItem from "./OrderItem.vue";
+import HistoryItem from "./HistoryItem.vue";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
 
@@ -28,7 +28,7 @@ const ordersSorted = computed(() => {
 
 onMounted(() => {
   axios
-    .get("http://localhost:3000/order-list", { withCredentials: true })
+    .get("http://localhost:3000/order-list/user", { withCredentials: true })
     .then((res) => (orders.value = res.data));
   axios
     .get("http://localhost:3000/status", { withCredentials: true })

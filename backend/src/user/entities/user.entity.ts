@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -22,7 +22,7 @@ export class User {
   @MinLength(6)
   password: string;
 
-  @OneToOne(() => Role, (role) => role.id, {
+  @ManyToOne(() => Role, (role) => role.id, {
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
@@ -32,7 +32,7 @@ export class User {
     referencedColumnName: 'id',
     foreignKeyConstraintName: 'roleId',
   })
-  @Column({ nullable: true })
+  @Column({ default: 3 })
   role: number;
 
   @CreateDateColumn()

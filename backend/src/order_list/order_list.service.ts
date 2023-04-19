@@ -4,7 +4,7 @@ import { UpdateOrderListDto } from './dto/update-order_list.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { OrderList } from './entities/order_list.entity';
 import { Repository } from 'typeorm';
-import { Request } from 'express';
+import { Response, Request } from 'express';
 
 @Injectable()
 export class OrderListService {
@@ -32,6 +32,12 @@ export class OrderListService {
 
   async findAll(): Promise<OrderList[]> {
     return await this.OrderListRepository.find();
+  }
+
+  async findAllUserOrder(req: Request): Promise<OrderList[]> {
+    return await this.OrderListRepository.find({
+      where: { ordered_by: req.cookies.userId },
+    });
   }
 
   async findOne(id: number): Promise<OrderList> {
