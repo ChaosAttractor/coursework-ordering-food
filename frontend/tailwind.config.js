@@ -7,9 +7,12 @@ module.exports = {
     extend: {
       colors: {
         "gray-primary": "#49454F",
+        violet: "#CCB7ED",
+        "slider-dot": "#415AF9",
+        "slider-rail": "#3D21B6",
         "alt-white": "#D9D9D9",
         "sidebar-active": "#C2B9D2",
-        "sidebar-hover": "",
+        "sidebar-hover": "#6D6678",
         "black-30": "rgba(0, 0, 0, 0.3)",
       },
       fontFamily: {

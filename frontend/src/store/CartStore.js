@@ -39,12 +39,8 @@ export const useCartStore = defineStore("CartStore", () => {
   };
   const removeFromCart = (item) => {
     if (cartItems.value.includes(item)) {
-      if (item.qnt > 1) {
-        item.qnt--;
-      } else {
-        let index = cartItems.value.indexOf(item);
-        cartItems.value.splice(index, 1);
-      }
+      let index = cartItems.value.indexOf(item);
+      cartItems.value.splice(index, 1);
     }
   };
   const incQnt = (item) => {

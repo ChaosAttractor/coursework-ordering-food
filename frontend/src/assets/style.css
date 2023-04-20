@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .sidebar-btn {
-  @apply inline-flex relative items-center w-[160px] pl-[10px] text-sidebar-active rounded-[60px] fill-sidebar-active hover:shadow-sidebar hover:bg-sidebar-active hover:text-gray-primary hover:fill-gray-primary;
+  @apply inline-flex relative items-center w-[160px] pl-[10px] text-sidebar-active rounded-[60px] fill-sidebar-active hover:shadow-sidebar hover:bg-sidebar-hover hover:text-violet hover:fill-violet;
 }

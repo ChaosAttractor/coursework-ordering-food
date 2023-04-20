@@ -14,8 +14,9 @@
       </div>
 
       <button
-        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white shadow-sidebar rounded-[60px] self-end flex items-center justify-center cursor-pointer"
-        @click="cartStore.addToCart(item)"
+        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white self-end flex items-center justify-center cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
+        :class="{ active: isActive }"
+        @click="add(item)"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +34,7 @@
 
 <script setup>
 import { useCartStore } from "../store/CartStore";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 const cartStore = useCartStore();
 const props = defineProps({
@@ -46,7 +47,23 @@ const props = defineProps({
     price: Number,
   },
 });
+
+const isActive = ref(false);
+
+const add = (item) => {
+  cartStore.addToCart(item);
+  isActive.value = true;
+  setTimeout(() => {
+    isActive.value = false;
+  }, 150);
+};
 const resultImg = computed(
   () => "http://localhost:3000/photos/" + props.item.image
 );
 </script>
+
+<style>
+.active {
+  @apply fill-violet;
+}
+</style>

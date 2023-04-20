@@ -33,22 +33,19 @@ const filterStore = useFilterStore();
 </script>
 
 <style>
-:root {
-  --vs-border-width: 0px;
-  --vs-dropdown-bg: #d9d9d9;
-  --font-size: 20px;
-  --vs-dropdown-z-index: 1000;
+.vue-slider-rail {
+  @apply bg-gray-primary;
 }
 
-.vs__search,
-.vs__selected,
-.vs__actions {
-  z-index: 1000;
-  font-size: 20px;
-  cursor: pointer;
+.vue-slider-process {
+  @apply bg-slider-rail;
 }
 
-.vs__dropdown-menu {
-  border-radius: 10px;
+.vue-slider-dot-handle {
+  @apply bg-slider-dot;
+}
+
+.vue-slider-dot-tooltip-inner {
+  @apply bg-slider-dot border-slider-dot;
 }
 </style>

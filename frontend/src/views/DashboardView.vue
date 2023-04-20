@@ -111,12 +111,14 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { useRoleStore } from "../store/RoleStore";
 
 const roleStore = useRoleStore();
 const router = useRouter();
+
 const logout = () => {
   axios
     .post("http://localhost:3000/logout", {}, { withCredentials: true })
@@ -128,4 +130,20 @@ const logout = () => {
       console.log(error);
     });
 };
+
+onMounted(() =>
+  axios
+    .post(
+      "http://localhost:3000/user/role",
+      { "Access-Control-Allow-Origin": "http://localhost:3000" },
+      { withCredentials: true }
+    )
+    .then((res) => (roleStore.role = res.data))
+);
 </script>
+
+<style scoped>
+.router-link-exact-active {
+  @apply bg-sidebar-active fill-gray-primary text-gray-primary;
+}
+</style>
