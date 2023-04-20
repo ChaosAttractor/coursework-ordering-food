@@ -31,7 +31,8 @@
         <p
           v-for="item in status"
           :key="item.status_id"
-          class="font-montserrat text-[24px] font-bold self-start pl-[30px]"
+          class="font-montserrat text-[24px] font-bold self-start pl-[30px] cursor-pointer hover:text-positive transition duration-400 ease-in-out"
+          :class="{ active: isActive }"
           @click="nextStatus"
         >
           {{ item.status_name }}
@@ -42,8 +43,10 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import axios from "axios";
+
+const isActive = ref(false);
 
 const props = defineProps({
   order: {
@@ -93,6 +96,10 @@ const logins = computed(() => {
 const nextStatus = async () => {
   if (props.order.status < 4) {
     props.order.status++;
+    isActive.value = true;
+    setTimeout(() => {
+      isActive.value = false;
+    }, 150);
     await axios.patch(
       `http://localhost:3000/order-list/${props.order.order_id}`,
       { status: props.order.status },
@@ -104,3 +111,9 @@ const nextStatus = async () => {
   }
 };
 </script>
+
+<style>
+.active {
+  @apply scale-90;
+}
+</style>

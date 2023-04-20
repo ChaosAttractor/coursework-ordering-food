@@ -45,7 +45,7 @@
           </p>
           <button
             @click="createOrder"
-            class="w-[250px] bg-none bg-alt-white h-[40px] flex items-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black"
+            class="w-[250px] bg-none bg-alt-white h-[40px] flex items-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:text-positive transition duration-400 ease-in-out"
           >
             Оформить заказ
           </button>

@@ -14,7 +14,7 @@
       </div>
 
       <button
-        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white self-end flex items-center justify-center cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
+        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white self-end flex items-center justify-center cursor-pointer hover:fill-positive transition duration-400 ease-in-out"
         :class="{ active: isActive }"
         @click="add(item)"
       >
@@ -62,8 +62,8 @@ const resultImg = computed(
 );
 </script>
 
-<style>
+<style scoped>
 .active {
-  @apply fill-violet;
+  @apply scale-125;
 }
 </style>

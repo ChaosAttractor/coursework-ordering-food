@@ -5,3 +5,7 @@
 .sidebar-btn {
   @apply inline-flex relative items-center w-[160px] pl-[10px] text-sidebar-active rounded-[60px] fill-sidebar-active hover:shadow-sidebar hover:bg-sidebar-hover hover:text-violet hover:fill-violet;
 }
+
+.sidebar-cart-info {
+  @apply absolute top-[-5px] left-[24px] bg-sidebar-active rounded-full h-[20px] w-[20px] text-gray-primary flex items-center justify-center font-montserrat font-bold;
+}

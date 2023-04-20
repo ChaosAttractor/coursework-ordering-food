@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         "gray-primary": "#49454F",
         violet: "#CCB7ED",
+        positive: "#16A34A",
+        negative: "#DC2626",
         "slider-dot": "#415AF9",
         "slider-rail": "#3D21B6",
         "alt-white": "#D9D9D9",
@@ -21,6 +23,9 @@ module.exports = {
       },
       backgroundSize: {
         "size-300%": "300% 300%",
+      },
+      transitionDuration: {
+        400: "400ms",
       },
       keyframes: {
         gradientMove: {

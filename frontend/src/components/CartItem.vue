@@ -14,25 +14,33 @@
         </p>
       </div>
       <div class="w-[30%] flex items-center select-none">
-        <p
-          class="font-montserrat text-[24px] font-bold self-start pl-[30px] cursor-pointer"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          class="w-[24px] h-[24px] self-center cursor-pointer hover:fill-negative transition duration-200 ease-in-out"
           @click="cartStore.deincQnt(item)"
         >
-          -
-        </p>
-        <p class="font-montserrat text-[24px] font-bold self-start pl-[30px]">
+          <path
+            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
+          />
+        </svg>
+        <p class="font-montserrat text-[24px] font-bold self-start px-[10px]">
           {{ item.qnt }} шт.
         </p>
-        <p
-          class="font-montserrat text-[24px] font-bold self-start pl-[30px] cursor-pointer"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          class="w-[24px] h-[24px] self-center cursor-pointer hover:fill-positive transition duration-200 ease-in-out"
           @click="cartStore.incQnt(item)"
         >
-          +
-        </p>
+          <path
+            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+          />
+        </svg>
       </div>
 
       <button
-        class="mr-[30px] font-montserrat text-[24px] p-[5px] font-bold bg-none rounded-[60px] w-[60px] flex justify-center items-center cursor-pointer"
+        class="mr-[30px] font-montserrat text-[24px] p-[5px] font-bold bg-none rounded-[60px] w-[60px] flex justify-center items-center cursor-pointer hover:fill-negative transition duration-200 ease-in-out"
         @click="cartStore.removeFromCart(item)"
       >
         <svg
@@ -51,7 +59,6 @@
 
 <script setup>
 import { useCartStore } from "../store/CartStore";
-import { computed } from "vue";
 
 const cartStore = useCartStore();
 const props = defineProps({
