@@ -1,6 +1,5 @@
 <template>
   <div class="w-full h-[700px] ml-[15px] pl-[30px] overflow-y-auto">
-    <!-- повесить лоадер потом при условии menu > 0 && filtered >=0 -->
     <div v-if="filteredMenuLength > 0">
       <div v-if="filteredMenuSoupLength > 0">
         <p class="font-montserrat font-bold text-[24px] text-white my-[20px]">
@@ -57,6 +56,9 @@
         <img :src="resultImg" class="m-auto" />
       </p>
     </div>
+    <div v-else class="flex flex-col justify-center h-[500px]">
+      <Loader />
+    </div>
   </div>
 </template>
 
@@ -65,6 +67,7 @@ import FoodItem from "./FoodItem.vue";
 import axios from "axios";
 import { useFilterStore } from "../store/FilterStore";
 import { ref, onMounted, computed } from "vue";
+import Loader from "./Loader.vue";
 
 const filterStore = useFilterStore();
 const menu = ref([]);

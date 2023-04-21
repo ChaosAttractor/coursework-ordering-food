@@ -41,10 +41,10 @@ const close = () => {
 
 .slide-enter-from,
 .slide-leave-to {
-  @apply opacity-0 translate-x-[100px];
+  @apply opacity-0 translate-x-full;
 }
 .slide-enter-active,
 .slide-leave-active {
-  @apply transition-all duration-300;
+  @apply transition-transform duration-300;
 }
 </style>

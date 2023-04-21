@@ -20,7 +20,7 @@
         <div class="w-full flex justify-center items-center mb-[30px]">
           <button
             @click="close"
-            class="w-[200px] bg-none bg-alt-white h-[40px] flex justify-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:text-positive transition duration-400 ease-in-out"
+            class="w-[200px] bg-none bg-alt-white h-[40px] flex justify-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:scale-[1.05] transition duration-400 ease-in-out"
           >
             Закрыть
           </button>

@@ -6,7 +6,7 @@
         Итог: {{ cartStore.total }} ₽
       </p>
       <p
-        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] cursor-pointer hover:text-positive transition duration-400 ease-in-out"
+        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
         @click="orderStore.showModal = true"
       >
         Заказать

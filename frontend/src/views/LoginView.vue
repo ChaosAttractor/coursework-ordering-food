@@ -37,7 +37,7 @@
           />
           <button
             @click="login"
-            class="w-[360px] bg-none bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat"
+            class="w-[360px] bg-none bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat hover:scale-[1.02] transition duration-400 ease-in-out"
           >
             Войти
           </button>

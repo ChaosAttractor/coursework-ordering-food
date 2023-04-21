@@ -32,9 +32,14 @@ module.exports = {
           "0%, 100%": { backgroundPosition: "left bottom" },
           "50%": { backgroundPosition: "center" },
         },
+        blinkType: {
+          "49%": { opacity: "0" },
+          "50%, 99%": { opacity: "1" },
+        },
       },
       animation: {
         gradientMove: "gradientMove 10s ease-in-out infinite",
+        blinkType: "blinkType 1s infinite",
       },
     },
   },

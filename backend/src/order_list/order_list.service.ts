@@ -31,12 +31,15 @@ export class OrderListService {
   }
 
   async findAll(): Promise<OrderList[]> {
-    return await this.OrderListRepository.find();
+    return await this.OrderListRepository.find({
+      order: { order_id: 'DESC' },
+    });
   }
 
   async findAllUserOrder(req: Request): Promise<OrderList[]> {
     return await this.OrderListRepository.find({
       where: { ordered_by: req.cookies.userId },
+      order: { order_id: 'DESC' },
     });
   }
 

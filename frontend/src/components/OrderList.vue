@@ -1,14 +1,20 @@
 <template>
   <div class="w-full h-[800px] ml-[15px] pl-[30px] overflow-y-auto">
-    <div class="flex gap-[30px] flex-wrap justify-center">
+    <div
+      class="flex gap-[30px] flex-wrap justify-center"
+      v-if="ordersLength > 0"
+    >
       <OrderItem
-        v-for="order in ordersSorted"
+        v-for="order in orders"
         :key="order.order_id"
         :order="order"
         :statusList="statusList"
         :loginsList="loginsList"
         class="mb-[30px]"
       />
+    </div>
+    <div v-else class="h-[800px] flex justify-center items-center">
+      <TypeWritter class="" :typeArray="typeArray" />
     </div>
   </div>
 </template>
@@ -17,13 +23,15 @@
 import OrderItem from "./OrderItem.vue";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
+import TypeWritter from "./TypeWritter.vue";
 
 const orders = ref([]);
 const statusList = ref([]);
 const loginsList = ref([]);
+const typeArray = ref(["Список заказов пуст"]);
 
-const ordersSorted = computed(() => {
-  return orders.value.sort((a, b) => b.order_id - a.order_id);
+const ordersLength = computed(() => {
+  return orders.value.length;
 });
 
 onMounted(() => {
