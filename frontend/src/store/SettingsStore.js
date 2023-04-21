@@ -6,6 +6,7 @@ export const useSettingsStore = defineStore("SettingsStore", () => {
 
   const toggleDark = () => {
     darkMode.value = !darkMode.value;
+    localStorage.darkMode = darkMode.value;
   };
   return { darkMode, toggleDark };
 });

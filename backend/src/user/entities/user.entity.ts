@@ -16,6 +16,7 @@ export class User {
   id: number;
 
   @Column()
+  @MinLength(6)
   login: string;
 
   @Column()

@@ -85,7 +85,7 @@
         </div>
         <div class="flex flex-col justify-start items-start">
           <div
-            class="sidebar-btn flex items-center select-none transition duration-400 ease-in-out cursor-pointer"
+            class="sidebar-btn mb-[15px] flex items-center select-none transition duration-400 ease-in-out cursor-pointer"
             @click="settingsStore.toggleDark"
           >
             <ModeSwitcher />

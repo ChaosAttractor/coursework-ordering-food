@@ -10,8 +10,8 @@
         Итог: {{ cartStore.total }} ₽
       </p>
       <p
-        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
-        @click="orderStore.showModal = true"
+        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] select-none cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
+        @click="order"
       >
         Заказать
       </p>
@@ -34,4 +34,9 @@ import { useOrderStore } from "../store/OrderStore";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
+
+const order = () => {
+  if (cartStore.itemsInCart == 0) return;
+  orderStore.showModal = true;
+};
 </script>
