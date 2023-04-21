@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[700px] ml-[15px] pl-[30px] overflow-y-auto">
+  <div class="w-full h-[700px] ml-[15px] py-[30px] pl-[30px] overflow-y-auto">
     <TransitionGroup
       name="list"
       tag="div"

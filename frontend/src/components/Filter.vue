@@ -1,6 +1,8 @@
 <template>
   <div class="flex gap-[68px] items-center">
-    <p class="font-montserrat font-bold text-[24px] text-white">Фильтры</p>
+    <p class="font-montserrat font-bold text-[24px] text-black dark:text-white">
+      Фильтры
+    </p>
     <div
       class="flex w-[340px] h-[38px] justify-between items-center rounded-[60px] bg-alt-white shadow-sidebar"
     >

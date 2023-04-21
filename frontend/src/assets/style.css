@@ -3,9 +3,23 @@
 @tailwind utilities;
 
 .sidebar-btn {
-  @apply inline-flex relative items-center w-[160px] pl-[10px] text-sidebar-active rounded-[60px] fill-sidebar-active hover:shadow-sidebar hover:bg-sidebar-hover hover:text-violet hover:fill-violet;
+  @apply inline-flex relative items-center w-[160px] pl-[10px] rounded-[60px] text-black fill-black  hover:shadow-sidebar hover:bg-sidebar-alt-hover dark:text-sidebar-active dark:fill-sidebar-active  dark:hover:bg-sidebar-hover dark:hover:text-violet dark:hover:fill-violet;
 }
 
 .sidebar-cart-info {
-  @apply absolute top-[-5px] left-[24px] bg-sidebar-active rounded-full h-[20px] w-[20px] text-gray-primary flex items-center justify-center font-montserrat font-bold;
+  @apply absolute top-[-5px] left-[24px] bg-sidebar-active rounded-full h-[20px] w-[20px] text-black dark:text-gray-primary flex items-center justify-center font-montserrat font-bold;
+}
+
+.bg-gradient-light {
+  @apply bg-gradient-to-tr from-purple-500 via-yellow-200 to-pink-400;
+}
+
+::-webkit-scrollbar {
+  @apply w-[15px];
+}
+::-webkit-scrollbar-track {
+  @apply bg-scrollbar-track dark:bg-scrollbar-track-dark rounded-[60px];
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-400 dark:bg-sidebar-active rounded-[60px];
 }

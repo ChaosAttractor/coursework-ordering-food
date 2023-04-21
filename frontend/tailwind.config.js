@@ -3,6 +3,7 @@ const plugin = require("tailwindcss/plugin");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -12,9 +13,13 @@ module.exports = {
         negative: "#DC2626",
         "slider-dot": "#415AF9",
         "slider-rail": "#3D21B6",
+        "scrollbar-track-dark": "#2D3036",
+        "scrollbar-track": "#b9b9b9",
+        "scrollbar-thumb": "#D7C07F",
         "alt-white": "#D9D9D9",
         "sidebar-active": "#C2B9D2",
         "sidebar-hover": "#6D6678",
+        "sidebar-alt-hover": "#DACFED",
         "black-30": "rgba(0, 0, 0, 0.3)",
       },
       fontFamily: {
@@ -61,17 +66,6 @@ module.exports = {
         },
         ".shadow-card": {
           boxShadow: "-2px 9px 11px 5px black",
-        },
-        "::-webkit-scrollbar": {
-          width: "15px",
-        },
-        "::-webkit-scrollbar-track": {
-          backgroundColor: "#2D3036",
-          borderRadius: "60px",
-        },
-        "::-webkit-scrollbar-thumb": {
-          backgroundColor: "#C2B9D2",
-          borderRadius: "60px",
         },
       });
     }),

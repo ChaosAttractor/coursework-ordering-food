@@ -2,7 +2,9 @@
   <div class="w-full h-[700px] ml-[15px] pl-[30px] overflow-y-auto">
     <div v-if="filteredMenuLength > 0">
       <div v-if="filteredMenuSoupLength > 0">
-        <p class="font-montserrat font-bold text-[24px] text-white my-[20px]">
+        <p
+          class="font-montserrat font-bold text-[24px] text-black dark:text-white my-[20px]"
+        >
           Первое
         </p>
         <div class="flex gap-[30px] flex-wrap">
@@ -14,7 +16,9 @@
         </div>
       </div>
       <div v-if="filteredMenuDishLength > 0">
-        <p class="font-montserrat font-bold text-[24px] text-white my-[20px]">
+        <p
+          class="font-montserrat font-bold text-[24px] text-black dark:text-white my-[20px]"
+        >
           Второе
         </p>
         <div class="flex gap-[30px] flex-wrap">
@@ -26,7 +30,9 @@
         </div>
       </div>
       <div v-if="filteredMenuBakeryLength > 0">
-        <p class="font-montserrat font-bold text-[24px] text-white my-[20px]">
+        <p
+          class="font-montserrat font-bold text-[24px] text-black dark:text-white my-[20px]"
+        >
           Выпечка
         </p>
         <div class="flex gap-[30px] flex-wrap">
@@ -38,7 +44,9 @@
         </div>
       </div>
       <div v-if="filteredMenuDrinkLength > 0">
-        <p class="font-montserrat font-bold text-[24px] text-white my-[20px]">
+        <p
+          class="font-montserrat font-bold text-[24px] text-black dark:text-white my-[20px]"
+        >
           Напитки
         </p>
         <div class="flex gap-[30px] flex-wrap mb-[25px]">
@@ -51,7 +59,9 @@
       </div>
     </div>
     <div v-else-if="menuLength > 0">
-      <p class="font-montserrat font-bold text-[34px] text-white text-center">
+      <p
+        class="font-montserrat font-bold text-[34px] text-black dark:text-white text-center"
+      >
         Ничего в соответствии с фильтрами не найдено
         <img :src="resultImg" class="m-auto" />
       </p>

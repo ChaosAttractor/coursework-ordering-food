@@ -1,12 +1,15 @@
 <template>
   <div
-    class="h-screen w-full flex justify-center items-center bg-gradient-primary bg-size-300% animate-gradientMove"
+    class="h-screen w-full flex justify-center items-center bg-gradient-light dark:bg-gradient-primary bg-size-300% animate-gradientMove"
   >
+    <ModeSwitcher
+      class="absolute top-[10px] right-[30px] bg-gray-400 dark:bg-transparent rounded"
+    />
     <div
-      class="w-[400px] h-[360px] bg-gray-primary rounded-[60px] shadow-custom"
+      class="w-[400px] h-[360px] bg-alt-white dark:bg-gray-primary rounded-[60px] shadow-custom"
     >
       <p
-        class="text-[36px] font-bold text-white mt-[20px] text-center font-montserrat"
+        class="text-[36px] font-bold text-black dark:text-white mt-[20px] text-center font-montserrat select-none"
       >
         ВХОД
       </p>
@@ -14,7 +17,7 @@
         <div class="flex flex-col items-center w-[400px]">
           <label
             for="login"
-            class="pl-[30px] text-white text-[28px] self-start font-montserrat-alt"
+            class="pl-[30px] dark:text-white text-[28px] self-start font-montserrat-alt select-none"
           >
             логин
           </label>
@@ -22,22 +25,22 @@
             type="text"
             name="login"
             v-model="UserLogin"
-            class="w-[350px] bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px]"
+            class="w-[350px] dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px]"
           />
           <label
             for="password"
-            class="pl-[30px] text-white text-[28px] self-start"
+            class="pl-[30px] dark:text-white text-[28px] self-start font-montserrat-alt select-none"
             >пароль</label
           >
           <input
             type="password"
             name="password"
             v-model="UserPassword"
-            class="w-[350px] bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat"
+            class="w-[350px] dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat"
           />
           <button
             @click="login"
-            class="w-[360px] bg-none bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat hover:scale-[1.02] transition duration-400 ease-in-out"
+            class="w-[360px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat hover:scale-[1.02] transition duration-400 ease-in-out"
           >
             Войти
           </button>
@@ -51,6 +54,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import ModeSwitcher from "../components/ModeSwitcher.vue";
 
 const UserLogin = ref("");
 const UserPassword = ref("");

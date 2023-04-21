@@ -1,8 +1,12 @@
 <template>
   <div>
-    <p class="text-[36px] font-montserrat font-bold text-white">Корзина</p>
+    <p class="text-[36px] font-montserrat font-bold text-black dark:text-white">
+      Корзина
+    </p>
     <div class="flex justify-between">
-      <p class="text-[24px] font-montserrat font-bold text-white mt-[20px]">
+      <p
+        class="text-[24px] font-montserrat font-bold text-black dark:text-white mt-[20px]"
+      >
         Итог: {{ cartStore.total }} ₽
       </p>
       <p

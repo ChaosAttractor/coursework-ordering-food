@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="font-montserrat text-[28px] font-bold text-white">
+    <p class="font-montserrat text-[28px] font-bold text-black dark:text-white">
       {{ typeValue
       }}<span
         class="font-normal animate-blinkType select-none"

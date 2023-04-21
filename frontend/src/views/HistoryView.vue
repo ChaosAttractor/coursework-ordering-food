@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-[36px] font-montserrat font-bold text-white">
+    <p class="text-[36px] font-montserrat font-bold text-black dark:text-white">
       История заказов
     </p>
     <HistoryList class="mt-[30px] w-full" />

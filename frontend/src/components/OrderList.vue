@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[800px] ml-[15px] pl-[30px] overflow-y-auto">
+  <div class="w-full h-[750px] ml-[15px] py-[30px] pl-[30px] overflow-y-auto">
     <div
       class="flex gap-[30px] flex-wrap justify-center"
       v-if="ordersLength > 0"
@@ -13,7 +13,7 @@
         class="mb-[30px]"
       />
     </div>
-    <div v-else class="h-[800px] flex justify-center items-center">
+    <div v-else class="h-[750px] flex justify-center items-center">
       <TypeWritter class="" :typeArray="typeArray" />
     </div>
   </div>

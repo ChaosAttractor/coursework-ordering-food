@@ -10,14 +10,14 @@
         <div>
           <label
             for="time"
-            class="pl-[15px] text-white text-[28px] self-start font-montserrat-alt"
+            class="pl-[15px] text-black dark:text-white text-[28px] self-start font-montserrat-alt"
           >
             К какому времени
           </label>
           <select
             name="time"
             v-model="timeSelect"
-            class="text-black w-[400px] bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] mb-[20px] font-montserrat-alt"
+            class="text-black w-[400px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] mb-[20px] font-montserrat-alt"
           >
             <option v-for="time in timeArr" :key="time.id">
               {{ time.title }}
@@ -25,14 +25,14 @@
           </select>
           <label
             for="payment"
-            class="pl-[15px] text-white text-[28px] self-start font-montserrat-alt"
+            class="pl-[15px] text-black dark:text-white text-[28px] self-start font-montserrat-alt"
           >
             Способ оплаты
           </label>
           <select
             name="payment"
             v-model="paymentSelect"
-            class="text-black w-[400px] bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat-alt"
+            class="text-black w-[400px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat-alt"
           >
             <option v-for="method in paymentArr" :key="method.id">
               {{ method.title }}
@@ -45,7 +45,7 @@
           </p>
           <button
             @click="createOrder"
-            class="w-[250px] bg-none bg-alt-white h-[40px] flex items-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:scale-[1.05] transition duration-400 ease-in-out"
+            class="w-[250px] bg-white dark:bg-alt-white h-[40px] flex items-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:scale-[1.05] transition duration-400 ease-in-out"
           >
             Оформить заказ
           </button>
