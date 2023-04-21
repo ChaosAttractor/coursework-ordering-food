@@ -14,12 +14,13 @@
       />
     </div>
     <div v-else class="h-[800px] flex justify-center items-center">
-      <TypeWritter class="" :typeArray="typeArray" />
+      <TypeWritter :typeArray="typeArray" />
     </div>
   </div>
 </template>
 
 <script setup>
+import TypeWritter from "./TypeWritter.vue";
 import HistoryItem from "./HistoryItem.vue";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";

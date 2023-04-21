@@ -21,7 +21,7 @@ const props = defineProps({
 
 const typeValue = ref("");
 const typeStatus = ref("");
-const typingSpeed = ref(200);
+const typingSpeed = ref(100);
 const erasingSpeed = ref(100);
 const newTextDelay = ref(2000);
 const typeArrayIndex = ref(0);
@@ -55,7 +55,7 @@ const eraseText = () => {
     typeArrayIndex.value += 1;
     if (typeArrayIndex.value >= typeArray.value.length)
       typeArrayIndex.value = 0;
-    setTimeout(typeText, typingSpeed.value + 1000);
+    setTimeout(typeText, typingSpeed.value + 500);
   }
 };
 onMounted(() => {
