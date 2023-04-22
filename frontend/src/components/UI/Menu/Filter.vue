@@ -4,7 +4,7 @@
       Фильтры
     </p>
     <div
-      class="flex w-[340px] h-[38px] justify-between items-center rounded-[60px] bg-alt-white shadow-sidebar"
+      class="flex w-[340px] h-[38px] justify-between items-center rounded-[60px] bg-white dark:bg-alt-white shadow-sidebar"
     >
       <p class="font-montserrat pl-[10px] font-bold text-[20px] text-black">
         По цене
@@ -35,18 +35,18 @@ const filterStore = useFilterStore();
 
 <style>
 .vue-slider-rail {
-  @apply bg-gray-primary;
+  @apply bg-scrollbar-track dark:bg-gray-primary;
 }
 
 .vue-slider-process {
-  @apply bg-slider-rail;
+  @apply bg-purple-400 dark:bg-slider-rail;
 }
 
 .vue-slider-dot-handle {
-  @apply bg-slider-dot;
+  @apply bg-purple-400 dark:bg-slider-dot;
 }
 
 .vue-slider-dot-tooltip-inner {
-  @apply bg-slider-dot border-slider-dot;
+  @apply bg-purple-400 border-purple-400 dark:bg-slider-dot dark:border-slider-dot;
 }
 </style>

@@ -10,7 +10,7 @@
         Итог: {{ cartStore.total }} ₽
       </p>
       <p
-        class="mr-[30px] btn transition duration-400 ease-in-out"
+        class="mr-[30px] btn shadow-sidebar transition duration-400 ease-in-out"
         :class="{ 'active-btn': clicked, shake: error }"
         @click="order"
       >

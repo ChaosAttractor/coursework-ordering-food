@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[80%] bg-alt-white rounded-[60px] shadow-card">
+  <div class="w-[80%] bg-white dark:bg-alt-white rounded-[60px] shadow-card">
     <div class="flex items-center justify-between">
       <div class="w-[30%]">
         <p

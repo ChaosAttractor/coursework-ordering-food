@@ -18,7 +18,7 @@
         <p>Корзина пустая</p>
         <p>Вернитесь в меню и заполните ее</p>
         <button
-          class="mt-[10px] btn transition duration-400 ease-in-out"
+          class="mt-[10px] btn border-[2px] border-alt-white shadow-xl transition duration-400 ease-in-out"
           @click="redirect"
         >
           В Меню

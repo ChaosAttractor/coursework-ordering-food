@@ -112,7 +112,7 @@
       </div>
 
       <div
-        class="w-full h-screen bg-alt-white dark:bg-gray-primary rounded-l-[60px] shadow-content flex justify-center items-center"
+        class="w-full h-screen bg-white dark:bg-gray-primary rounded-l-[60px] shadow-content flex justify-center items-center"
       >
         <div class="w-[calc(100%-100px)] h-[calc(100vh-100px)]">
           <RouterView />

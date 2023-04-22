@@ -58,7 +58,7 @@
           />
           <button
             @click="login"
-            class="w-[360px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat hover:scale-[1.02] transition duration-400 ease-in-out"
+            class="w-[360px] bg-white btn py-0 px-[10px] mt-[40px] flex items-center justify-center hover:scale-[1.02] transition duration-400 ease-in-out"
             :class="{ 'active-btn': clicked }"
           >
             Войти

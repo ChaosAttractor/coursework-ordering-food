@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[280px] h-[350px] bg-alt-white rounded-[60px] flex flex-col justify-center shadow-card"
+    class="w-[280px] h-[350px] bg-white dark:bg-alt-white rounded-[60px] flex flex-col justify-center shadow-card"
   >
     <div>
       <img :src="resultImg" />
@@ -14,7 +14,7 @@
       </div>
 
       <button
-        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white self-end flex items-center justify-center cursor-pointer hover:fill-positive transition duration-400 ease-in-out"
+        class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold self-end flex items-center justify-center cursor-pointer hover:fill-positive transition duration-400 ease-in-out"
         :class="{ 'add-btn': isActive }"
         @click="add(item)"
       >

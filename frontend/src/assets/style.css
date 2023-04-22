@@ -15,7 +15,7 @@
 }
 
 .btn {
-  @apply h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold text-black bg-alt-white shadow-sidebar rounded-[60px] select-none cursor-pointer hover:scale-[1.05];
+  @apply h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold text-black bg-white dark:bg-alt-white rounded-[60px] select-none cursor-pointer hover:scale-[1.05];
 }
 
 .shake {
