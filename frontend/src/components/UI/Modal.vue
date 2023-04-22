@@ -21,8 +21,8 @@
 </template>
 
 <script setup>
-import { useSettingsStore } from "../store/SettingsStore";
-import { useOrderStore } from "../store/OrderStore";
+import { useSettingsStore } from "@/store/SettingsStore";
+import { useOrderStore } from "@/store/OrderStore";
 
 const settingsStore = useSettingsStore();
 const orderStore = useOrderStore();

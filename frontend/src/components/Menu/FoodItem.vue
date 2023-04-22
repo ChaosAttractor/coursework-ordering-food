@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { useCartStore } from "../store/CartStore";
+import { useCartStore } from "@/store/CartStore";
 import { computed, ref } from "vue";
 
 const cartStore = useCartStore();

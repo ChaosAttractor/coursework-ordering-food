@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useOrderStore } from "../store/OrderStore";
+import { useOrderStore } from "@/store/OrderStore";
 
 const orderStore = useOrderStore();
 

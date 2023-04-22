@@ -75,9 +75,9 @@
 <script setup>
 import FoodItem from "./FoodItem.vue";
 import axios from "axios";
-import { useFilterStore } from "../store/FilterStore";
+import { useFilterStore } from "@/store/FilterStore";
 import { ref, onMounted, computed } from "vue";
-import Loader from "./Loader.vue";
+import Loader from "../UI/Loader.vue";
 
 const filterStore = useFilterStore();
 const menu = ref([]);

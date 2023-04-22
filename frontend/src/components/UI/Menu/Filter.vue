@@ -24,11 +24,10 @@
 
 <script setup>
 import { ref } from "vue";
-import { useFilterStore } from "../store/FilterStore";
+import { useFilterStore } from "@/store/FilterStore";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
 
-const rangeValue = ref([0, 500]);
 const min = ref(0);
 const max = ref(500);
 const filterStore = useFilterStore();

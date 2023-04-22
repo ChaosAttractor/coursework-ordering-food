@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { useCartStore } from "../store/CartStore";
+import { useCartStore } from "@/store/CartStore";
 
 const cartStore = useCartStore();
 const props = defineProps({

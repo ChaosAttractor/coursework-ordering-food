@@ -23,7 +23,7 @@
 import OrderItem from "./OrderItem.vue";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
-import TypeWritter from "./TypeWritter.vue";
+import TypeWritter from "../UI/TypeWritter.vue";
 
 const orders = ref([]);
 const statusList = ref([]);

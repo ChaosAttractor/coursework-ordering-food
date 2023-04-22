@@ -75,7 +75,7 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import useVuelidate from "@vuelidate/core";
 import { helpers, minLength, required } from "@vuelidate/validators";
-import ModeSwitcher from "../components/ModeSwitcher.vue";
+import ModeSwitcher from "../components/UI/ModeSwitcher.vue";
 
 const userLogin = ref("");
 const userPassword = ref("");
@@ -95,11 +95,16 @@ const rules = computed(() => ({
 }));
 const vuelidate = useVuelidate(rules, { userLogin, userPassword });
 
+const click = (event, timing) => {
+  event.value = true;
+  setTimeout(() => {
+    event.value = false;
+  }, timing);
+};
+
 const login = () => {
   clicked.value = true;
-  setTimeout(() => {
-    clicked.value = false;
-  }, 100);
+  click(clicked, 100);
   vuelidate.value.$touch();
   let errors = vuelidate.value.$errors.length;
   if (errors) return;
@@ -120,10 +125,7 @@ const login = () => {
     })
     .catch((error) => {
       console.log(error);
-      shake.value = true;
-      setTimeout(() => {
-        shake.value = false;
-      }, 300);
+      click(shake, 300);
     });
 };
 </script>

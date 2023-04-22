@@ -129,7 +129,7 @@ import { useRouter } from "vue-router";
 import { useRoleStore } from "../store/RoleStore";
 import { useCartStore } from "../store/CartStore";
 import { useSettingsStore } from "../store/SettingsStore";
-import ModeSwitcher from "../components/ModeSwitcher.vue";
+import ModeSwitcher from "../components/UI/ModeSwitcher.vue";
 
 const settingsStore = useSettingsStore();
 const cartStore = useCartStore();

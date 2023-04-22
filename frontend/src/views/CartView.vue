@@ -25,18 +25,28 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useCartStore } from "../store/CartStore";
-import CartList from "../components/CartList.vue";
-import Modal from "../components/Modal.vue";
-import OrderForm from "../components/OrderForm.vue";
-import OrderInfo from "../components/OrderInfo.vue";
 import { useOrderStore } from "../store/OrderStore";
+import CartList from "../components/Cart/CartList.vue";
+import Modal from "../components/UI/Modal.vue";
+import OrderForm from "../components/UI/Order/OrderForm.vue";
+import OrderInfo from "../components/UI/Order/OrderInfo.vue";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
+const clicked = ref(false);
+
+const click = (event, timing) => {
+  event.value = true;
+  setTimeout(() => {
+    event.value = false;
+  }, timing);
+};
 
 const order = () => {
   if (cartStore.itemsInCart == 0) return;
+  click(clicked, 100);
   orderStore.showModal = true;
 };
 </script>

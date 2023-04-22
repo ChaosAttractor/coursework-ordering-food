@@ -11,6 +11,6 @@
 </template>
 
 <script setup>
-import Filter from "../components/Filter.vue";
-import FoodList from "../components/FoodList.vue";
+import FoodList from "../components/Menu/FoodList.vue";
+import Filter from "../components/UI/Menu/Filter.vue";
 </script>

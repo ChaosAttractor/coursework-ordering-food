@@ -8,5 +8,5 @@
 </template>
 
 <script setup>
-import HistoryList from "../components/HistoryList.vue";
+import HistoryList from "../components/History/HistoryList.vue";
 </script>

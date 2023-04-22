@@ -8,5 +8,5 @@
 </template>
 
 <script setup>
-import OrderList from "../components/OrderList.vue";
+import OrderList from "../components/Order/OrderList.vue";
 </script>

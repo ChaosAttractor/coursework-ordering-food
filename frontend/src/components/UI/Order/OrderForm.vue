@@ -57,8 +57,8 @@
 
 <script setup>
 import { ref } from "vue";
-import { useCartStore } from "../store/CartStore";
-import { useOrderStore } from "../store/OrderStore";
+import { useCartStore } from "@/store/CartStore";
+import { useOrderStore } from "@/store/OrderStore";
 import axios from "axios";
 
 const cartStore = useCartStore();

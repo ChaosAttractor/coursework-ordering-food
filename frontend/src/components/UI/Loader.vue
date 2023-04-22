@@ -23,5 +23,6 @@
 <script setup>
 import { ref } from "vue";
 import TypeWritter from "./TypeWritter.vue";
+
 const typeArray = ref(["Загрузка..."]);
 </script>
