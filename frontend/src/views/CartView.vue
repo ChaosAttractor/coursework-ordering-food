@@ -10,7 +10,8 @@
         Итог: {{ cartStore.total }} ₽
       </p>
       <p
-        class="mr-[30px] h-[40px] flex items-center font-montserrat text-[24px] p-[15px] font-bold bg-alt-white shadow-sidebar rounded-[60px] select-none cursor-pointer hover:scale-[1.05] transition duration-400 ease-in-out"
+        class="mr-[30px] btn transition duration-400 ease-in-out"
+        :class="{ 'active-btn': clicked, shake: error }"
         @click="order"
       >
         Заказать
@@ -26,27 +27,26 @@
 
 <script setup>
 import { ref } from "vue";
-import { useCartStore } from "../store/CartStore";
-import { useOrderStore } from "../store/OrderStore";
+import { useCartStore } from "@/store/CartStore";
+import { useOrderStore } from "@/store/OrderStore";
 import CartList from "../components/Cart/CartList.vue";
 import Modal from "../components/UI/Modal.vue";
 import OrderForm from "../components/UI/Order/OrderForm.vue";
 import OrderInfo from "../components/UI/Order/OrderInfo.vue";
+import { useEventStore } from "@/store/EventStore";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
+const eventStore = useEventStore();
 const clicked = ref(false);
-
-const click = (event, timing) => {
-  event.value = true;
-  setTimeout(() => {
-    event.value = false;
-  }, timing);
-};
+const error = ref(false);
 
 const order = () => {
-  if (cartStore.itemsInCart == 0) return;
-  click(clicked, 100);
+  eventStore.onClick(clicked, 100);
+  if (cartStore.itemsInCart == 0) {
+    eventStore.onClick(error, 300);
+    return;
+  }
   orderStore.showModal = true;
 };
 </script>

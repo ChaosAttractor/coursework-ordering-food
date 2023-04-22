@@ -13,10 +13,19 @@
             class="pl-[15px] text-black dark:text-white text-[28px] self-start font-montserrat-alt"
           >
             К какому времени
+            <TransitionGroup name="error" tag="span">
+              <p
+                class="inline text-[15px] font-bold text-red-600"
+                v-for="error in vuelidate.timeSelect.$errors"
+                :key="error.$uid"
+              >
+                {{ error.$message }}
+              </p>
+            </TransitionGroup>
           </label>
           <select
             name="time"
-            v-model="timeSelect"
+            v-model="vuelidate.timeSelect.$model"
             class="text-black w-[400px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] mb-[20px] font-montserrat-alt"
           >
             <option v-for="time in timeArr" :key="time.id">
@@ -28,10 +37,19 @@
             class="pl-[15px] text-black dark:text-white text-[28px] self-start font-montserrat-alt"
           >
             Способ оплаты
+            <TransitionGroup name="error" tag="span">
+              <p
+                class="inline text-[15px] font-bold text-red-600"
+                v-for="error in vuelidate.paymentSelect.$errors"
+                :key="error.$uid"
+              >
+                {{ error.$message }}
+              </p>
+            </TransitionGroup>
           </label>
           <select
             name="payment"
-            v-model="paymentSelect"
+            v-model="vuelidate.paymentSelect.$model"
             class="text-black w-[400px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] font-montserrat-alt"
           >
             <option v-for="method in paymentArr" :key="method.id">
@@ -46,6 +64,7 @@
           <button
             @click="createOrder"
             class="w-[250px] bg-white dark:bg-alt-white h-[40px] flex items-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:scale-[1.05] transition duration-400 ease-in-out"
+            :class="{ 'active-btn': clicked, shake: shake }"
           >
             Оформить заказ
           </button>
@@ -56,20 +75,43 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useCartStore } from "@/store/CartStore";
 import { useOrderStore } from "@/store/OrderStore";
 import axios from "axios";
+import useVuelidate from "@vuelidate/core";
+import { helpers, required } from "@vuelidate/validators";
+import { useEventStore } from "@/store/EventStore";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
+const eventStore = useEventStore();
 
 const timeArr = ref([{ id: 1, title: "Как можно скорее" }]);
 const paymentArr = ref([{ id: 1, title: "На месте, при получении" }]);
 const timeSelect = ref({});
 const paymentSelect = ref({});
+const clicked = ref(false);
+const shake = ref(false);
 
-const createOrder = () =>
+const rules = computed(() => ({
+  timeSelect: {
+    required: helpers.withMessage("*", required),
+  },
+  paymentSelect: {
+    required: helpers.withMessage("*", required),
+  },
+}));
+const vuelidate = useVuelidate(rules, { timeSelect, paymentSelect });
+
+const createOrder = () => {
+  eventStore.onClick(clicked, 100);
+  vuelidate.value.$touch();
+  let errors = vuelidate.value.$errors.length;
+  if (errors) {
+    eventStore.onClick(shake, 300);
+    return;
+  }
   axios
     .post(
       "http://localhost:3000/order-list",
@@ -94,4 +136,21 @@ const createOrder = () =>
     .catch((error) => {
       console.log(error);
     });
+};
 </script>
+
+<style scoped>
+.error-move,
+.error-enter-active,
+.error-leave-active {
+  transition: all 0.3s ease;
+}
+.error-enter-from,
+.error-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+.error-leave-active {
+  position: absolute;
+}
+</style>

@@ -59,7 +59,7 @@
           <button
             @click="login"
             class="w-[360px] bg-white dark:bg-alt-white h-[40px] rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat hover:scale-[1.02] transition duration-400 ease-in-out"
-            :class="{ active: clicked }"
+            :class="{ 'active-btn': clicked }"
           >
             Войти
           </button>
@@ -76,6 +76,9 @@ import { useRouter } from "vue-router";
 import useVuelidate from "@vuelidate/core";
 import { helpers, minLength, required } from "@vuelidate/validators";
 import ModeSwitcher from "../components/UI/ModeSwitcher.vue";
+import { useEventStore } from "@/store/EventStore";
+
+const eventStore = useEventStore();
 
 const userLogin = ref("");
 const userPassword = ref("");
@@ -95,16 +98,9 @@ const rules = computed(() => ({
 }));
 const vuelidate = useVuelidate(rules, { userLogin, userPassword });
 
-const click = (event, timing) => {
-  event.value = true;
-  setTimeout(() => {
-    event.value = false;
-  }, timing);
-};
-
 const login = () => {
   clicked.value = true;
-  click(clicked, 100);
+  eventStore.onClick(clicked, 100);
   vuelidate.value.$touch();
   let errors = vuelidate.value.$errors.length;
   if (errors) return;
@@ -125,20 +121,12 @@ const login = () => {
     })
     .catch((error) => {
       console.log(error);
-      click(shake, 300);
+      eventStore.onClick(shake, 300);
     });
 };
 </script>
 
 <style scoped>
-.shake {
-  @apply animate-shake;
-}
-
-.active {
-  @apply bg-gray-400 dark:bg-gray-400;
-}
-
 .error-move,
 .error-enter-active,
 .error-leave-active {

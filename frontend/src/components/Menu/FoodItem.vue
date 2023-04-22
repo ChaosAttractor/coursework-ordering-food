@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[288px] h-[350px] bg-alt-white rounded-[60px] flex flex-col justify-center shadow-card"
+    class="w-[280px] h-[350px] bg-alt-white rounded-[60px] flex flex-col justify-center shadow-card"
   >
     <div>
       <img :src="resultImg" />
@@ -15,7 +15,7 @@
 
       <button
         class="mr-[30px] w-[60px] font-montserrat text-[24px] p-[5px] font-bold bg-alt-white self-end flex items-center justify-center cursor-pointer hover:fill-positive transition duration-400 ease-in-out"
-        :class="{ active: isActive }"
+        :class="{ 'add-btn': isActive }"
         @click="add(item)"
       >
         <svg
@@ -35,8 +35,10 @@
 <script setup>
 import { useCartStore } from "@/store/CartStore";
 import { computed, ref } from "vue";
+import { useEventStore } from "../../store/EventStore";
 
 const cartStore = useCartStore();
+const eventStore = useEventStore();
 const props = defineProps({
   item: {
     product_id: Number,
@@ -52,18 +54,9 @@ const isActive = ref(false);
 
 const add = (item) => {
   cartStore.addToCart(item);
-  isActive.value = true;
-  setTimeout(() => {
-    isActive.value = false;
-  }, 150);
+  eventStore.onClick(isActive, 150);
 };
 const resultImg = computed(
   () => "http://localhost:3000/photos/" + props.item.image
 );
 </script>
-
-<style scoped>
-.active {
-  @apply scale-125;
-}
-</style>

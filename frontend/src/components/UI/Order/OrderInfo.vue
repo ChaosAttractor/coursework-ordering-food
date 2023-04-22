@@ -21,6 +21,7 @@
           <button
             @click="close"
             class="w-[200px] bg-white dark:bg-alt-white h-[40px] flex justify-center rounded-[60px] text-[24px] px-[10px] my-[40px] font-bold font-montserrat text-black hover:scale-[1.05] transition duration-400 ease-in-out"
+            :class="{ 'active-btn': click }"
           >
             Закрыть
           </button>
@@ -33,10 +34,15 @@
 <script setup>
 import { ref } from "vue";
 import { useOrderStore } from "@/store/OrderStore";
+import { useEventStore } from "@/store/EventStore";
 
 const orderStore = useOrderStore();
+const eventStore = useEventStore();
+
+const click = ref(false);
 
 const close = () => {
+  eventStore.onClick(click, 100);
   orderStore.showModal = false;
   orderStore.orderFormPage = true;
   orderStore.orderInfoPage = false;
