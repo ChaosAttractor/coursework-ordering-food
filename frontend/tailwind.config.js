@@ -51,6 +51,7 @@ module.exports = {
         gradientMove: "gradientMove 10s ease-in-out infinite",
         blinkType: "blinkType 1s infinite",
         shake: "shake 1s infinite ease",
+        "spin-slow": "spin 3s linear infinite",
       },
     },
   },
