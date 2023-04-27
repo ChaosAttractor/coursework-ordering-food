@@ -137,6 +137,7 @@ const roleStore = useRoleStore();
 const router = useRouter();
 
 const logout = () => {
+  roleStore.role = "";
   axios
     .post("http://localhost:3000/logout", {}, { withCredentials: true })
     .then((res) => {
