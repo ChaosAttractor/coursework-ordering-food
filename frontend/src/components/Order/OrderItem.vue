@@ -24,7 +24,7 @@
           :key="item.id"
           class="font-montserrat text-[24px] font-bold self-start pl-[30px]"
         >
-          {{ item.login }}
+          {{ item.username }}
         </p>
       </div>
       <div class="w-[30%] flex items-center justify-center select-none">
