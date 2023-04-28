@@ -1,6 +1,6 @@
 export class CreateUserDto {
   id: number;
-  login: string;
+  username: string;
   password: string;
   role: number;
   createdAt: Date;

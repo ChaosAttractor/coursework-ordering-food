@@ -15,11 +15,11 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column('varchar', { length: 30, nullable: false })
   @MinLength(6)
-  login: string;
+  username: string;
 
-  @Column()
+  @Column('varchar', { length: 255, nullable: false })
   @MinLength(6)
   password: string;
 

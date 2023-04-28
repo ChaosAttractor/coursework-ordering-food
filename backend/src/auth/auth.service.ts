@@ -21,7 +21,7 @@ export class AuthService {
     if (!user) throw new BadRequestException('Неправильно введен логин!');
     const {
       password,
-      login,
+      username,
       refreshToken,
       id,
       role,
@@ -33,7 +33,7 @@ export class AuthService {
     if (!passwordMatches)
       throw new BadRequestException('Неправильно введен пароль!');
     const roleName = await this.roleService.findOne(user.role);
-    const tokens = await this.getTokens(user.id, user.login);
+    const tokens = await this.getTokens(user.id, user.username);
     await this.updateRefreshToken(user.id, tokens.refreshToken);
     res.cookie('accessToken', tokens.accessToken, {
       httpOnly: true,

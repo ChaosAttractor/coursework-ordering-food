@@ -108,7 +108,7 @@ const login = () => {
     .post(
       "http://localhost:3000/login",
       {
-        login: userLogin.value.trim(),
+        username: userLogin.value.trim(),
         password: userPassword.value.trim(),
       },
       {

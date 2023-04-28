@@ -23,14 +23,14 @@ export class UserService {
     return await this.usersRepository.find({
       select: {
         id: true,
-        login: true,
+        username: true,
       },
     });
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
-    user.login = createUserDto.login;
+    user.username = createUserDto.username;
     user.password = await bcrypt.hash(createUserDto.password, 10);
     user.role = createUserDto.role;
 
@@ -39,7 +39,7 @@ export class UserService {
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.usersRepository.findOneBy({ id: id });
-    user.login = updateUserDto.login;
+    user.username = updateUserDto.username;
     if (updateUserDto.password) {
       user.password = await bcrypt.hash(updateUserDto.password, 10);
     }
@@ -61,8 +61,8 @@ export class UserService {
     return this.usersRepository.findOneBy({ id: id });
   }
 
-  findOneByLogin(login: string): Promise<User> {
-    return this.usersRepository.findOneBy({ login: login });
+  findOneByLogin(username: string): Promise<User> {
+    return this.usersRepository.findOneBy({ username: username });
   }
 
   async remove(id: string): Promise<void> {
