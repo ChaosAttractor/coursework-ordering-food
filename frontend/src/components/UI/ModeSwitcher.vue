@@ -1,7 +1,7 @@
 <template>
   <div
     @click="settingsStore.toggleDark"
-    class="w-[30px] h-[30px] flex items-center justify-center"
+    class="w-[30px] h-[30px] flex items-center justify-center cursor-pointer"
   >
     <svg
       v-if="settingsStore.darkMode"

@@ -1,14 +1,19 @@
 <template>
   <div class="w-[80%] bg-white dark:bg-alt-white rounded-[60px] shadow-card">
     <div class="flex items-center justify-around">
-      <div class="w-[30%]">
-        <ul
-          v-for="item in list"
-          :key="item.product_id"
-          class="font-montserrat text-[24px] font-bold self-start pl-[60px]"
-        >
-          <li>{{ item.product_name }} - {{ item.qnt }} шт.</li>
-        </ul>
+      <div class="w-[33%] flex flex-row">
+        <p class="font-montserrat text-[24px] font-bold pl-[60px] self-center">
+          №{{ order.order_id }}
+        </p>
+        <div>
+          <ul
+            v-for="item in list"
+            :key="item.product_id"
+            class="font-montserrat text-[24px] font-bold self-start pl-[60px]"
+          >
+            <li>{{ item.product_name }} - {{ item.qnt }} шт.</li>
+          </ul>
+        </div>
       </div>
       <div
         class="w-[30%] font-montserrat text-[24px] text-center font-bold py-[10px]"
@@ -33,8 +38,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-import axios from "axios";
+import { computed } from "vue";
 
 const props = defineProps({
   order: {

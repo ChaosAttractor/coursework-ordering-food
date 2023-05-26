@@ -88,7 +88,7 @@
             class="sidebar-btn mb-[15px] flex items-center select-none transition duration-400 ease-in-out cursor-pointer"
             @click="settingsStore.toggleDark"
           >
-            <ModeSwitcher />
+            <ModeSwitcher @click="settingsStore.toggleDark" />
             <p class="font-montserrat text-[24px] font-semibold">Тема</p>
           </div>
           <div
